@@ -1,0 +1,16 @@
+A.因過多電腦進行串接，在架設類似DHCP的服務時，彼此之間就容易產生競爭與干擾，或在封包傳遞的過程中可能會有問題。
+
+B.可以利用VLAN在一部 switch 裡面，切割出不同的區域網路，且不同LAN彼此間不互相干擾。
+
+C.1
+D.(1)port number:67 (2)封包格式:UDP協定 (3)用戶端啟用的port number:68 (4)用戶端封包格式:UDP協定
+
+E.設定檔: /etc/dhcp/dhcpd.conf，租約檔: /var/lib/dhcpd/dhcpd.leases
+
+F. (1)自動取得IP:client端設定指定ipv4.method為auto即可。
+	(2)取得固定IP:把client的MAC address設定到server的/etc/dhcp/dhcpd.conf設定檔中，且加入固定IP address，
+設定方式如下:
+host client {
+	hardware ethernat client's MAC address;
+	fixed-address IP address;
+}
