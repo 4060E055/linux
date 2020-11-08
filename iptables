@@ -1,0 +1,7 @@
+systemctl disable firewall.service
+systemctl stop firewall.service
+yum install iptables* -y
+systemctl start iptables.service
+systemctl enable iptables.service
+systemctl status iptables.service
+systemctl restart ipteables.service
