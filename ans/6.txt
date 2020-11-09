@@ -1,0 +1,20 @@
+
+A.
+(1)公鑰加密 (2)私鑰解密 (3)私鑰
+B. 
+authorized_keys
+C. 
+(1)  AES (2) ssh -Q cipher
+D.
+xauth
+E. 
+/.vnc/passwd
+F. 
+/.vnc/xstartup
+G. 
+3389
+H. 
+(1)進入/ssh/sshd_config檔案中新增port=7777
+(2)systemctl restart ssh
+(3)semanage port –a –t ssh_port_t -p tcp 7777
+(4)ssh -p 6666 myuser@myip
