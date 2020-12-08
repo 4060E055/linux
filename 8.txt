@@ -1,0 +1,7 @@
+A-1.  NetBIOS over TCP/IP 
+A-2. 445跟139，慣用445
+B. CIFS 協定 
+C-1.smb、nmb。
+C-2.smb:139,445。nmb:137,138
+D. //srv/mydate/checkdata/
+E.multiuser、sec=ntlmssp。
