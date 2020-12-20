@@ -1,0 +1,10 @@
+A.(1)FQDN：www.dic.ksu.edu.tw 
+(2)hostname：www
+(3)domain name：.ksu.edu.tw
+B.(1)正解：從主機名稱找到 IP 。
+(2)反解：從 IP 去找到主機名稱。
+(3)DNS的zone：所謂 zone 就是把一個 domain 扣掉分給下層負責的部份, 剩下來的就是 zone。
+C.7個：A、NS、AAAA、MX、CNAME、PTR、SOA
+D.無論 master 還是 slave ，其所記錄的資料應該是一模一樣。在 DNS 系統當中，領域名稱的查詢是『先搶先贏』的狀態，因此每一部 DNS 伺服器的角色在 Internet 上面都是一樣的，並無先後。
+E.(1)com：公司、行號、企業、org：組織、機構、edu：教育單位、gov：政府單位、net：網路、通訊、mil：軍事單位
+(2)最早給軍事單位。
