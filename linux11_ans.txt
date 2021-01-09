@@ -1,0 +1,29 @@
+A.DNS
+B.mysql_secure_installation
+C./mydata.sql (假設操作者資料庫名為 datauser)
+mysqldump -u datauser -p thisdata> /mydata.sql
+D.1.首先要讓apache不用密碼即可使用root的權限:usermod -s /bin/base apachese
+2.再visudo進去修改設定值讓 apache 加上不用密碼即可使用的功能:apache ALL=(ALL) NOPASSWD: ALL
+3.編輯/var/www/html/checkls.php檔，內容為:
+	<?php
+        $log = shell_exec('/bin/sudo /bin/bash -c "/bin/ls -al /var/www/"');
+	?>
+	<pre>
+	<?php echo $log; ?>
+	</pre>
+4.再來觀察 /var/log/messages 以及 /var/log/httpd/error_log 然後克服無法瀏覽網頁顯示問題(根據系統不同，有不同解決方法)。
+E.exec只會返回命令的最後一行，shell_exec雖會全部輸出，但功能在安全模式下會被禁用。
+F.1.先安裝python3-mod_wsgi
+2.在 /etc/httpd/conf.d/yourfile.conf檔新增:
+ <Directory "/var/www/html/scripts">
+        Options +ExecCGI
+        Require all granted
+        AddHandler wsgi-script .wsgi .py
+</Directory>
+3.從新啟動httpd:systemctl restart httpd
+4.在/var/www/html底下創建一個scripts資料夾:mkdir /var/www/html/wsgi
+
+5.最後在/var/www/html/wsgi創建的腳本都可執行wsgi的程式
+
+
+

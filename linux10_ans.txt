@@ -1,0 +1,14 @@
+A.網站架構的web框架（Linux-Apache-MySQL-PHP）的簡寫
+B.命令通道:prot:20 ，資料流通道:prot:21
+C.(1)active mode: 在 Active 模式的 FTP client 一開始時會先使用一個大於 1024(N) 的 TCP port 連結至 FTP server 的port 21，然後 FTP client 會打開該 port 的下一個數字的 port (N+1) 並送至 FTPserver 說期望下次的溝通可以經由新的 port (N+1)，這樣比較不會佔用到 FTP server 的 port 21 而影響別的 FTP sessions，同時 FTP server 會使用 port 20 連結至 FTP client 新送過來的 port 號來傳資料。
+(2)passive mode: 在Passive Mode FTP 下，FTP client一開始和 Active Mode FTP 一樣，打開二個 port (N > 1024 及 N+1)，使用第一個port 連接至 FTP server的 port 21，並送出命令 PORT 讓 server 連至 N port 再送出 PASV 命令給 server，這樣會造成 server使用 一個大於 1024 的 port 連接至 client 並送出命令 PORT N ( N >1024 ) 給client，這樣 client 就會使用 N + 1 並開始傳輸資料。
+D.nf_conntrack_ftp 以及 nf_nat_ftp 兩個常用的 FTP 模組。
+E.vim /etc/httpd/conf/httpd.conf
+F.200 OK: 請求已成功，請求所希望的回應頭或資料體將隨此回應返回。實際的回應將取決於所使用的請求方法。在GET請求中，回應將包含與請求的資源相對應的實體。在POST請求中，回應將包含描述或操作結果的實體。
+403 Forbidden:收到並理解請求，與401回應不同的是，身分驗證並不能提供任何幫助，而且這個請求也不應該被重複提交。如果這不是一個HEAD請求，而且伺服器希望能夠講清楚為何請求不能被執行，那麼就應該在實體內描述拒絕的原因。
+404 NotFound: 請求失敗，請求所希望得到的資源未被在伺服器上發現，但允許使用者的後續請求。沒有資訊能夠告訴使用者這個狀況到底是暫時的還是永久的。
+500 Iternal Server Error: 通用錯誤訊息，伺服器遇到了一個未曾預料的狀況，導致了它無法完成對請求的處理。沒有給出具體錯誤資訊。
+G.Indexes: 如果在此目錄下找不到『首頁檔案 (預設為 index.html) 』時， 就顯示整個目錄下的檔案名稱，至於『首頁檔案檔名』則與 DirectoryIndex 設定值有關。
+FollowSymLinks: 這是 Follow Symbolic Links 的縮寫， 字面意義是讓連結檔可以生效的意思。我們知道首頁目錄在 /var/www/html，既然是 WWW 的根目錄，理論上就像被 chroot 一般！ 一般來說被 chroot 的程式將無法離開其目錄，也就是說預設的情況下，你在 /var/www/html 底下的連結檔只要連結到非此目錄的其他地方，則該連結檔預設是失效的。 但使用此設定即可讓連結檔有效的離開本目錄。
+ExecCGI: 讓此目錄具有執行 CGI 程式的權限。
+
